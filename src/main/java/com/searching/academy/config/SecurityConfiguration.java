@@ -87,16 +87,9 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-
-                .antMatchers(HttpMethod.GET, "/api/articles").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/articles/images/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/forms/by-code/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/images/**").permitAll()
 
                 .antMatchers("/api/users/**").hasAnyAuthority(Role.ADMIN.name())
-                .antMatchers("/api/regions/**").hasAnyAuthority(Role.ADMIN.name())
-                .antMatchers("/api/organisations/**").hasAnyAuthority(Role.ADMIN.name())
-                .antMatchers("/api/doctors/**").hasAnyAuthority(Role.ADMIN.name())
-                .antMatchers("/api/articles/**").hasAnyAuthority(Role.ADMIN.name(), Role.MODERATOR.name())
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest()
                 .authenticated();
